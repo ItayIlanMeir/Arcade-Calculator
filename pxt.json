@@ -1,7 +1,7 @@
 {
     "name": "arcade-calculator",
     "version": "0.0.1",
-    "description": "",
+    "description": "Interactive CAlculator Extension & Tutorial",
     "dependencies": {
         "device": "*"
     },

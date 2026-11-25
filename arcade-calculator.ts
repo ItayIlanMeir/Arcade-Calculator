@@ -229,6 +229,35 @@ namespace calculator {
     }
 
     /**
+    *Opens the spite editor so you can draw or pick a custom cursor image 
+    */
+    //% group="Interaction & Intput"
+    //% block="set calculator cursor image to $img=screen_image_picker"
+    //% weight=95
+    export fuction setCursorImage(img: Image) {
+       cursorImg = Img
+       if (pointer) {
+       pointer.setImage(cursorImg)
+       }
+    }
+
+   /**
+    *Uses on exiting player sprite as the calculator cursor 
+    */
+    //% group="Interaction & Intput"
+    //% block="use sprite %spite=varialbe_get(mySprite) as calculator cursor"
+    //% weight=94 
+    export fuction setCursorSprite(sprite: Sprite) {
+        if (pointer && pointer !=sprite){ 
+            pointer.destroy()
+        }
+        pointer=sprite
+        pointer.setStayIcScreen(true)
+    }
+
+
+    
+    /**
      * Clicks whichever button the cursor is currently touching
      */
     //% group="Interaction & Input"

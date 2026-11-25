@@ -34,7 +34,7 @@ enum CalcButton {
 }
 
 //% color="#2b579a" weight=100 icon="\uf1ec" block="Calculator"
-//% groups=['Setup & Visuals', 'Interaction & Input', 'Math & State', 'Events']
+//% groups=['Setup & Visuals', 'Interaction & Input', 'Math & State', 'Events']'
 namespace calculator {
     let currentInput = ""
     let firstNumStr = ""
@@ -246,7 +246,7 @@ namespace calculator {
     *Uses on exiting player sprite as the calculator cursor 
     */
     //% group="Interaction & Input"
-    //% block="use sprite %sprite=varialbes_get(mySprite) as calculator cursor"
+    //% block="use sprite %sprite=variables__get(mySprite) as calculator cursor"
     //% weight=94 
     export function setCursorSprite(sprite: Sprite) {
         if (pointer && pointer != sprite){ 

@@ -235,7 +235,7 @@ namespace calculator {
     //% block="set calculator cursor image to $img=screen_image_picker"
     //% weight=95
     export fucntion setCursorImage(img: Image) {
-       cursorImg = Img
+       cursorImg = img
        if (pointer) {
        pointer.setImage(cursorImg)
        }

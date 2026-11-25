@@ -54,7 +54,7 @@ namespace calculator {
     1 5 5 5 5 1 . .
     1 5 5 1 1 1 . .
     . . 1 1 . . . .
-    `          
+    `
     let numBtnColor = 13
     let opBtnColor = 4
 
@@ -222,9 +222,10 @@ namespace calculator {
             return
         }
         
-        pointer = spites.craete(cursorImg, SpriteKind.Player) 
+        pointer = sprites.create(cursorImg, SpriteKind.Player) 
         pointer.setPosition(80, 70)
         pointer.setStayInScreen(true)
+        pointer.z=100
         controller.moveSprite(pointer, speed, speed)
     }
 
@@ -234,7 +235,7 @@ namespace calculator {
     //% group="Interaction & Input"
     //% block="set calculator cursor image to $img=screen_image_picker"
     //% weight=95
-    export fucntion setCursorImage(img: Image) {
+    export function setCursorImage(img: Image) {
        cursorImg = img
        if (pointer) {
        pointer.setImage(cursorImg)
@@ -245,14 +246,15 @@ namespace calculator {
     *Uses on exiting player sprite as the calculator cursor 
     */
     //% group="Interaction & Input"
-    //% block="use sprite %spite=varialbes_get(mySprite) as calculator cursor"
+    //% block="use sprite %sprite=varialbes_get(mySprite) as calculator cursor"
     //% weight=94 
-    export fucntion setCursorSprite(sprite: Sprite) {
-        if (pointer && pointer !=sprite){ 
+    export function setCursorSprite(sprite: Sprite) {
+        if (pointer && pointer != sprite){ 
             pointer.destroy()
         }
         pointer=sprite
         pointer.setStayInScreen(true)
+        pointer.z=100
     }
 
 

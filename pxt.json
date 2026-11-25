@@ -11,6 +11,7 @@
         "README.md",
         "assets.json",
         "arcade-calculator.ts"
+        "tutorial.md"
     ],
     "testFiles": [
         "test.ts"

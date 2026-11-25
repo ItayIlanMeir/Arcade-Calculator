@@ -1,5 +1,5 @@
 {
-    "name": "calc",
+    "name": "arcade-calculator",
     "version": "0.0.1",
     "description": "",
     "dependencies": {
@@ -23,5 +23,5 @@
     "supportedTargets": [
         "arcade"
     ],
-    "preferredEditor": "tsprj"
+    "preferredEditor": "blocksprj"
 }

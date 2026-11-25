@@ -38,3 +38,7 @@ calculator.onButtonPressed(function (button) {
 
 ### Step 5: Test Your Calculator! @unplugged
 Use the **Arrow Keys** (or WASD) in the simulator to move the cursor over numbers and operators, and press **Spacebar / Z** to calculate equations!
+
+```package
+arcade-calculator=github:ItayIlanMeir/Arcade-Calculator#v0.0.1
+```

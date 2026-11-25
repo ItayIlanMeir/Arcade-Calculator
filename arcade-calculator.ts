@@ -46,6 +46,15 @@ namespace calculator {
 
     let bodyColor = 11
     let screenColor = 7
+    let cursorImg: Image =img`
+    1 1 . . . . . . 
+    1 5 1 . . . . . 
+    1 5 5 1 . . . . 
+    1 5 5 5 1 . . . 
+    1 5 5 5 5 1 . .
+    1 5 5 1 1 1 . .
+    . . 1 1 . . . .
+    `          
     let numBtnColor = 13
     let opBtnColor = 4
 
@@ -208,17 +217,12 @@ namespace calculator {
     //% speed.defl=100
     //% weight=100
     export function enableCursor(speed: number = 100) {
-        if (pointer) return
-        pointer = sprites.create(img`
-            1 1 . . . . . .
-            1 5 1 . . . . .
-            1 5 5 1 . . . .
-            1 5 5 5 1 . . .
-            1 5 5 5 5 1 . .
-            1 5 5 1 1 1 . .
-            1 1 5 1 . . . .
-            . . 1 1 . . . .
-        `, SpriteKind.Player)
+        if (pointer) {
+            controller.moveSprite(pointer,speed, speed)
+            return
+        }
+        
+        pinter = spites.crate(cursorImg, SpriteKind.Player) 
         pointer.setPosition(80, 70)
         pointer.setStayInScreen(true)
         controller.moveSprite(pointer, speed, speed)

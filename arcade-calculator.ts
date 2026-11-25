@@ -46,7 +46,7 @@ namespace calculator {
 
     let bodyColor = 11
     let screenColor = 7
-    let cursorImg: Image =img`
+    let cursorImg: Image =img'
     1 1 . . . . . . 
     1 5 1 . . . . . 
     1 5 5 1 . . . . 
@@ -54,7 +54,7 @@ namespace calculator {
     1 5 5 5 5 1 . .
     1 5 5 1 1 1 . .
     . . 1 1 . . . .
-    `
+    '
     let numBtnColor = 13
     let opBtnColor = 4
 

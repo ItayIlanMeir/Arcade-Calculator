@@ -1,7 +1,7 @@
 {
     "name": "arcade-calculator",
     "version": "0.0.1",
-    "description": "Interactive CAlculator Extension & Tutorial",
+    "description": "Bulid a Calculator",
     "dependencies": {
         "device": "*"
     },
@@ -13,6 +13,11 @@
         "arcade-calculator.ts"
         "tutorial.md"
     ],
-    
+    "testFiles": [ 
+        "test.ts"
+    ],
+    "targetVersions": {
+      "target":"2.0.15"
+        "targetId": "arcade"
     "preferredEditor": "blocksprj"
 }

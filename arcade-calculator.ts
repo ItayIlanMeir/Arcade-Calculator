@@ -222,7 +222,7 @@ namespace calculator {
             return
         }
         
-        pinter = spites.crate(cursorImg, SpriteKind.Player) 
+        pointer = spites.craete(cursorImg, SpriteKind.Player) 
         pointer.setPosition(80, 70)
         pointer.setStayInScreen(true)
         controller.moveSprite(pointer, speed, speed)
@@ -231,10 +231,10 @@ namespace calculator {
     /**
     *Opens the spite editor so you can draw or pick a custom cursor image 
     */
-    //% group="Interaction & Intput"
+    //% group="Interaction & Input"
     //% block="set calculator cursor image to $img=screen_image_picker"
     //% weight=95
-    export fuction setCursorImage(img: Image) {
+    export fucntion setCursorImage(img: Image) {
        cursorImg = Img
        if (pointer) {
        pointer.setImage(cursorImg)
@@ -244,15 +244,15 @@ namespace calculator {
    /**
     *Uses on exiting player sprite as the calculator cursor 
     */
-    //% group="Interaction & Intput"
-    //% block="use sprite %spite=varialbe_get(mySprite) as calculator cursor"
+    //% group="Interaction & Input"
+    //% block="use sprite %spite=varialbes_get(mySprite) as calculator cursor"
     //% weight=94 
-    export fuction setCursorSprite(sprite: Sprite) {
+    export fucntion setCursorSprite(sprite: Sprite) {
         if (pointer && pointer !=sprite){ 
             pointer.destroy()
         }
         pointer=sprite
-        pointer.setStayIcScreen(true)
+        pointer.setStayInScreen(true)
     }
 
 

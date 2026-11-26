@@ -1,7 +1,7 @@
 {
     "name": "arcade-calculator",
-    "version": "0.0.1",
-    "description": "Bulid a Calculator",
+    "version": "0.0.2",
+    "description": "Build a Calculator",
     "dependencies": {
         "device": "*"
     },
@@ -12,15 +12,15 @@
         "assets.json",
         "arcade-calculator.ts"
     ],
-    "testFiles": [ 
+    "testFiles": [
         "test.ts"
     ],
     "targetVersions": {
-      "target":"2.0.15",
+        "target": "2.0.15",
         "targetId": "arcade"
     },
-    "supportedTargets" :[
+    "supportedTargets": [
         "arcade"
-    ], 
+    ],
     "preferredEditor": "blocksprj"
 }

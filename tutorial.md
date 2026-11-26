@@ -1,3 +1,7 @@
+markdown
+
+# Build an Interactive Calculator   
+
 ### Step 1: Open the Calculator
 Let's draw the calculator on the screen when the game starts.
 Drag ``||calculator:show calculator||`` into ``||loops:on start||``.

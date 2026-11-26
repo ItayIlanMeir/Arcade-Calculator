@@ -34,7 +34,7 @@ enum CalcButton {
 }
 
 //% color="#2b579a" weight=100 icon="\uf1ec" block="Calculator"
-//% groups=['Setup & Visuals', 'Interaction & Input', 'Math & State', 'Events']'
+//% groups=['Setup & Visuals', 'Interaction & Input', 'Math & State', 'Events']
 namespace calculator {
     let currentInput = ""
     let firstNumStr = ""
@@ -46,17 +46,19 @@ namespace calculator {
 
     let bodyColor = 11
     let screenColor = 7
-    let cursorImg: Image =img'
-    1 1 . . . . . . 
-    1 5 1 . . . . . 
-    1 5 5 1 . . . . 
-    1 5 5 5 1 . . . 
-    1 5 5 5 5 1 . .
-    1 5 5 1 1 1 . .
-    . . 1 1 . . . .
-    '
     let numBtnColor = 13
     let opBtnColor = 4
+
+    let cursorImg: Image = img`
+        1 1 . . . . . .
+        1 5 1 . . . . .
+        1 5 5 1 . . . .
+        1 5 5 5 1 . . .
+        1 5 5 5 5 1 . .
+        1 5 5 1 1 1 . .
+        1 1 5 1 . . . .
+        . . 1 1 . . . .
+    `
 
     let displaySprite: Sprite = null
     let pointer: Sprite = null
@@ -121,7 +123,9 @@ namespace calculator {
     //% block="show calculator"
     //% weight=100
     export function showCalculator() {
-        if (visible) return
+        if (visible) {
+            hideCalculator()
+        }
         visible = true
 
         const bg = image.create(160, 120)
@@ -134,6 +138,7 @@ namespace calculator {
 
         displaySprite = sprites.create(image.create(100, 14), SpriteKind.Food)
         displaySprite.setPosition(80, 19)
+        displaySprite.z = 1
 
         btnSprites = []
         btnLabels = []
@@ -155,9 +160,14 @@ namespace calculator {
 
                 const btn = sprites.create(btnImg, SpriteKind.Player)
                 btn.setPosition(x + Math.idiv(BTN_W, 2), y + Math.idiv(BTN_H, 2))
+                btn.z = 1
                 btnSprites.push(btn)
                 btnLabels.push(label)
             }
+        }
+
+        if (pointer) {
+            pointer.z = 10
         }
         refreshScreen()
     }
@@ -173,11 +183,9 @@ namespace calculator {
         visible = false
         if (displaySprite) displaySprite.destroy()
         for (let s of btnSprites) s.destroy()
-        if (pointer) pointer.destroy()
         btnSprites = []
         btnLabels = []
         displaySprite = null
-        pointer = null
     }
 
     /**
@@ -192,6 +200,9 @@ namespace calculator {
         screenColor = screen
         numBtnColor = num
         opBtnColor = op
+        if (visible) {
+            showCalculator()
+        }
     }
 
     /**
@@ -218,47 +229,47 @@ namespace calculator {
     //% weight=100
     export function enableCursor(speed: number = 100) {
         if (pointer) {
-            controller.moveSprite(pointer,speed, speed)
+            pointer.z = 10
+            controller.moveSprite(pointer, speed, speed)
             return
         }
-        
-        pointer = sprites.create(cursorImg, SpriteKind.Player) 
+        pointer = sprites.create(cursorImg, SpriteKind.Player)
         pointer.setPosition(80, 70)
         pointer.setStayInScreen(true)
-        pointer.z=100
+        pointer.z = 10
         controller.moveSprite(pointer, speed, speed)
     }
 
     /**
-    *Opens the spite editor so you can draw or pick a custom cursor image 
-    */
+     * Opens the sprite editor so you can draw or pick a custom cursor image
+     */
     //% group="Interaction & Input"
-    //% block="set calculator cursor image to $img=screen_image_picker"
+    //% block="set calculator cursor image to %img=screen_image_picker"
     //% weight=95
     export function setCursorImage(img: Image) {
-       cursorImg = img
-       if (pointer) {
-       pointer.setImage(cursorImg)
-       }
+        cursorImg = img
+        if (pointer) {
+            pointer.setImage(cursorImg)
+            pointer.z = 10
+        }
     }
 
-   /**
-    *Uses on exiting player sprite as the calculator cursor 
-    */
+    /**
+     * Uses an existing player sprite as the calculator cursor
+     */
     //% group="Interaction & Input"
-    //% block="use sprite %sprite=variables__get(mySprite) as calculator cursor"
-    //% weight=94 
+    //% block="use sprite %sprite=variables_get(mySprite) as calculator cursor"
+    //% weight=94
     export function setCursorSprite(sprite: Sprite) {
-        if (pointer && pointer != sprite){ 
+        if (!sprite) return
+        if (pointer && pointer != sprite) {
             pointer.destroy()
         }
-        pointer=sprite
+        pointer = sprite
         pointer.setStayInScreen(true)
-        pointer.z=100
+        pointer.z = 10
     }
 
-
-    
     /**
      * Clicks whichever button the cursor is currently touching
      */
@@ -339,16 +350,13 @@ namespace calculator {
                     }
                     result = firstNum / secondNum
                 }
-
                 const resStr = (result == Math.floor(result)) ? ("" + Math.floor(result)) : ("" + result)
                 fullEquation = firstNumStr + " " + operator + " " + currentInput + " = " + resStr
                 refreshScreen()
-
                 currentInput = resStr
                 firstNumStr = ""
                 operator = ""
                 resetNext = true
-
                 if (onEqualsHandler) onEqualsHandler(result, fullEquation)
             }
         } else {
